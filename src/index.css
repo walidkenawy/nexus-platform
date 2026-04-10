@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-purple: #6366f1;
+  --color-brand-blue: #3b82f6;
+  --color-brand-dark: #050505;
+  --color-brand-surface: #0a0a0a;
+  
+  --ease-luxury: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-white font-sans antialiased selection:bg-brand-purple/30;
+  }
+}
+
+.glass {
+  @apply bg-white/[0.02] backdrop-blur-3xl border border-white/[0.05];
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-500;
+}
+
+.luxury-shadow {
+  box-shadow: 0 0 80px -20px rgba(99, 102, 241, 0.15);
+}
+
+.hover-glow {
+  @apply transition-all duration-500;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.3);
+  @apply border-brand-purple/30;
+}
+
+.underline-animation {
+  @apply relative overflow-hidden;
+}
+
+.underline-animation::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-[1px] bg-brand-purple origin-right scale-x-0 transition-transform duration-500 ease-luxury;
+}
+
+.underline-animation:hover::after {
+  @apply origin-left scale-x-100;
+}
+
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
